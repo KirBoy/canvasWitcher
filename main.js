@@ -1,4 +1,6 @@
-document.getElementById('audio').volume = 0
+window.onload = () => {
+
+document.getElementById('audio').volume = 0.2
 
 const canvasBody = document.getElementById('canvas')
 const canvas = canvasBody.getContext('2d')
@@ -2687,3 +2689,5 @@ function tick(now) {
 //   ]
 //   )
 // }
+
+}
