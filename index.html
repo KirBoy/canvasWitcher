@@ -39,14 +39,9 @@
   }
 
 
-  #vidoe {
+  #video {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    -o-filter: blur(15px);
-    filter: blur(15px);
-    object-fit: cover;
-    color: #231c28;
+  z-index: 210;
   }
 
   #shadow {
@@ -78,9 +73,12 @@
 </style>
 
 <body>
-  <iframe src="audio.mp3" type=audio/mp3 allow=autoplay  style=display:none></iframe>
-  <!-- <audio id="audio" autoplay="true"  src="audio.mp3">
+  <!-- <iframe src="silence.mp3" type=audio/mp3 allow=autoplay  style=display:none></iframe>
+  <audio id="audio"   src="audio.mp3">
   </audio> -->
+  <video id="video" width="320" height="240" muted loop   style=display:none >
+    <source src="audio.mp3">
+   </video>
   <img id="bg" src="bg.jpg" alt="">
   <div id="shadow"></div>
   <div id="content">

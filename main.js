@@ -1,11 +1,45 @@
+
 window.onload = () => {
   console.log('loaded')
+  document.getElementById('video').play()
 
-
-// document.getElementById('audio').volume = 0
-
+// document.getElementById('audio').volume = 0.2
+let flag = false
 const canvasBody = document.getElementById('canvas')
 const canvas = canvasBody.getContext('2d')
+
+document.onclick = () => {
+  flag = !flag
+  document.getElementById('video').muted= false
+
+  if(flag) {
+    initArt1([
+      'ddдd', 
+      'дddд', 
+      'sдdд', 
+      'sдsд', 
+      'sдsд', 
+      'дssд', 
+      'ssдs', 
+    ],86,2)
+    document.getElementById('video').volume = 0.2
+    return
+  }
+
+  initArt1([
+    'dddd', 
+    'dddd', 
+    'sдsд', 
+    'ssдs', 
+    'sдsд', 
+    'ssss', 
+    'ssss', 
+  ],86,2)
+
+
+  document.getElementById('video').volume = 0
+}
+
 
 
 const w = canvasBody.width = 750
@@ -17,6 +51,7 @@ const opts = {
 }
 
 const color = {
+  д:'white',
   d: '#485162',
   s: '#46648d',
   c: '#4f8aa7',
@@ -76,13 +111,13 @@ const color = {
 let picture = [
   'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddddddddddddddddddddddddddddddd',
   'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddd',
-  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddd',
-  'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddddddddddddddddd',
-  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssddddddddddddd',
-  'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddddddd',
-  'cccccccccccccccccccccccccccssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddd',
-  'ccccccccccccccccccccccccccccccccccccsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdd',
-  'ccccccccccccccccccccccccccccccccccccccccccccsssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddddddдddddddddddddddd',
+  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssддddddddddddddddd',
+  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssддддssдdдdddddddddd',
+  'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssддддsssдsssdddddddd',
+  'cccccccccccccccccccccccccccssssssssssssssssssssssssssssssssssssssssssssssssssssssддддssдsдsssssdddd',
+  'ccccccccccccccccccccccccccccccccccccsssssssssssssssssssssssssssssssssssssssssssssssддssssssssssssdd',
+  'ccccccccccccccccccccccccccccccccccccccccccccssssssssssssssssssssssssssssssssssssssssдssssssssssssss',
   'cccccccccccccccccccccccccccccccccccccccccccccccccssssssssssssssssssssssssssssssssssssssssssssssssss',
   'llllllllllllllllllllllcccccccccccccccccccccccccccccccccsssssssssssssssssssssssssssssssssssssssssss',
   'lllllllllllllllllllllllllllcccccccccccccccccccccccccccccccccssssssssssssssssssssssssssssssssssssss',
@@ -219,6 +254,11 @@ function tick(now) {
   // console.log(diff);
 
   arr.forEach(el => {
+
+    if(el[0] === 0) {
+      el[1] += now
+    }
+
     if (el[0] !== false) {
       el[0] = (now - el[1]) / 200
     }
