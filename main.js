@@ -1,6 +1,8 @@
 window.onload = () => {
+  console.log('loaded')
+}
 
-document.getElementById('audio').volume = 0
+document.getElementById('audio').volume = 0.1
 
 const canvasBody = document.getElementById('canvas')
 const canvas = canvasBody.getContext('2d')
@@ -214,7 +216,7 @@ function tick(now) {
 
   let diff = now - y
   y = now
-  console.log(diff);
+  // console.log(diff);
 
   arr.forEach(el => {
     if (el[0] !== false) {
@@ -2689,5 +2691,3 @@ function tick(now) {
 //   ]
 //   )
 // }
-
-}
