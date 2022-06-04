@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+
+  #content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    transform: scale(0.65);
+  }
+
+  #glow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 300px;
+    background-color: #3b6e7ea1;
+    border-radius: 50%;
+    filter: blur(200px);
+    animation: 10s linear 0s infinite alternate glow;
+  }
+
+
+  #vidoe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -o-filter: blur(15px);
+    filter: blur(15px);
+    object-fit: cover;
+    color: #231c28;
+  }
+
+  #shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(10, 27, 46, 0.267);
+  }
+
+  @keyframes glow {
+    0% {
+      right: 0;
+      width: 300px;
+    }
+
+    100% {
+      right: -50px;
+      width: 500px;
+    }
+  }
+
+  #bg {
+    position: absolute;
+    z-index: 0;
+    transform: scale(-1.4, 1) translateX(30px);
+    filter: blur(5px);
+  }
+</style>
+
+<body>
+
+  <audio id="audio" autoplay="true"  src="audio.mp3">
+  </audio>
+  <img id="bg" src="/bg.jpg" alt="">
+  <div id="shadow"></div>
+  <div id="content">
+  
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
