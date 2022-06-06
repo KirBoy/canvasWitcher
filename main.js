@@ -8,43 +8,39 @@ window.onload = () => {
   const canvasBody = document.getElementById('canvas')
   const canvas = canvasBody.getContext('2d')
 
-  document.onclick = changeValue
-  document.ontouchstart = changeValue
+  document.onclick = () => {
+    flag = !flag
+    document.getElementById('video').muted = false
 
-
-  function changeValue () {
-
-      flag = !flag
-      document.getElementById('video').muted = false
-  
-      if (flag) {
-        initArt1([
-          'ddдd',
-          'дddд',
-          'sдdд',
-          'sдsд',
-          'sдsд',
-          'дssд',
-          'ssдs',
-        ], 86, 2)
-        document.getElementById('video').volume = 0.2
-        return
-      }
-  
+    if (flag) {
       initArt1([
-        'dddd',
-        'dddd',
+        'ddдd',
+        'дddд',
+        'sдdд',
         'sдsд',
+        'sдsд',
+        'дssд',
         'ssдs',
-        'sдsд',
-        'ssss',
-        'ssss',
       ], 86, 2)
-  
-  
-      document.getElementById('video').volume = 0
-    
+      document.getElementById('video').volume = 0.2
+      return
+    }
+
+    initArt1([
+      'dddd',
+      'dddd',
+      'sдsд',
+      'ssдs',
+      'sдsд',
+      'ssss',
+      'ssss',
+    ], 86, 2)
+
+
+    document.getElementById('video').volume = 0
   }
+
+
 
   const w = canvasBody.width = 750
   const h = canvasBody.height = 650
